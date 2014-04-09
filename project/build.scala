@@ -4,7 +4,7 @@ import Keys._
 object MacroBuild extends Build {
   val Name = "utforsca"
   val Organization = "com.mdedetrich"
-  val Version = "1.0.0-SNAPSHOT"
+  val Version = "1.0.0"
   val StartYear = Some(2014)
   val ScalaVersion = "2.10.3"
 
