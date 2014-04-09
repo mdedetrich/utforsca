@@ -1,14 +1,14 @@
 # utforsca: Utils for scala
 
-[utforsca] is a collection of utils that I have personally deemed incredibly useful for scala. The project follows these principles
+[utforsca][1] is a collection of utils that I have personally deemed incredibly useful for scala. The project follows these principles
 in regards to what gets added
 
-* Small: Utils that are added are small, utforsca isn't designed to be a kitchen sink library that implements every single use case. Utils
+* Small: Utils that are added are small, [utforsca][1] isn't designed to be a kitchen sink library that implements every single use case. Utils
     are only added if they are deemed as necessary (often because they are not possible in Scala )
 * Clean and Simple: The Utils that are added are designed to be very simple, clean and easy to use. In other words, the utils are designed to leverage
-    scala as much as possible. [utforsca] is not designed to be [scalaz], the utils being added aren't meant to be as generic as some other
+    scala as much as possible. [utforsca][1] is not designed to be [scalaz][2], the utils being added aren't meant to be as generic as some other
     libraries (possibly being restrictive on purpose), they are designed to be easy to pick up and use
-* Easy to maintain: Because of the the previous two points, [utforsca] is designed to be easy/trivial to maintain. API changes occurances
+* Easy to maintain: Because of the the previous two points, [utforsca][1] is designed to be easy/trivial to maintain. API changes occurrences
     are to happen as minimal as possible (ideally never)
 
 # Installation
@@ -60,7 +60,7 @@ Now lets create a companion object which holds our sealed contents
     Title.all.map(_.id)
 
 Very obvious use case for this is allowing to represent enumerated types easily in a database. If you are using something
-like [Slick], you can easily create mappers going from, and to, type `Title`. Its also a very non verbose way to define static
+like [Slick][3], you can easily create mappers going from, and to, type `Title`. Its also a very non verbose way to define static
 databases in your code. Its a very nice, type safe replacement for Java/Scala's `Enum` type
 
 ### Limitations
@@ -70,3 +70,7 @@ Limitations exist for `SealedContents`, however they are quite obvious. The type
 * Be `sealed`: The compiler needs to now all possible child values at compile time to generate enumeration
 * Every child must be an `case object`, not a `case class`: `case object`s can be instantiated without a constructor, so its actually
 possible to create instances of these types at runtime
+
+[1]:https://github.com/mdedetrich/utforsca
+[2]:https://github.com/scalaz/scalaz
+[3]:http://slick.typesafe.com/
