@@ -24,7 +24,7 @@ Then simply add the following dependency to `libraryDependencies`
 
 # Contents
 
-Here is a list of the utils contained within [utforsca]
+Here is a list of the utils contained within [utforsca][1]
 
 ## SealedContents
 
