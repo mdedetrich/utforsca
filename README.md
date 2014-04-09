@@ -13,9 +13,9 @@ in regards to what gets added
 
 # Installation
 
-First make sure you have the `com.mdedetrich` repository in your `build.sbt` or your `project/<somefile>.scala`.
+First make sure you have the `mdedetrich-releases` repository in your `build.sbt` or your `project/<somefile>.scala`.
 
-    resolvers ++= Seq("com.mdedetrich" at "http://artifactory.mdedetrich.com/libs-release")
+    resolvers ++= Seq("mdedetrich-releases" at "http://artifactory.mdedetrich.com/libs-release")
 
 Then simply add the following dependency to `libraryDependencies`
 
