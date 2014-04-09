@@ -28,36 +28,45 @@ Here is a list of the utils contained within [utforsca][1]
 
 ## SealedContents
 
-    import com.mdedetrich.utforsca.SealedContents
+```scala
+import com.mdedetrich.utforsca.SealedContents
+```
 
 SealedContents is an incredibly handy macro taken from [here](http://stackoverflow.com/questions/13671734/iteration-over-a-sealed-trait-in-scala).
 The macro automatically constructs a `Set[T]` of an [ADT](http://en.wikipedia.org/wiki/Abstract_data_type) `T`, that contains an enumeration of all the types
 contained within `T`. As a very simple example, assume that we create some ADT `Title`, which contains various Titles that can be attributed to a person
 
-    sealed abstract class Title(val id:Long val formalName:String)
+```scala
+sealed abstract class Title(val id:Long val formalName:String)
+```
 
 Lets now populate our `Title` with various entries
 
-    case object Mr extends Title(1,"Mr")
-    case object Mrs extends Title(2,"Mrs")
-    case object Miss extends Title(3,"Miss")
-    case object Ms extends Title(4,"Ms")
-    case object Dr extends Title(5,"Dr")
-    case object Professor extends Title(6,"Professor")
+```scala
+case object Mr extends Title(1,"Mr")
+case object Mrs extends Title(2,"Mrs")
+case object Miss extends Title(3,"Miss")
+case object Ms extends Title(4,"Ms")
+case object Dr extends Title(5,"Dr")
+case object Professor extends Title(6,"Professor")
+```
 
 Now lets create a companion object which holds our sealed contents
 
-    object Title {
-        val all:Set[Title] = SealedContents.values[Title]
-    }
+```scala
+object Title {
+    val all:Set[Title] = SealedContents.values[Title]
+}
+```
 
 `Title.all` will now contain an enumeration of all of the child values of Title, which lets us do stuff like this
 
-    // Find a title by id
-    Title.all.find(_.id == id)
-
-    // Enumerate through every title to get its id
-    Title.all.map(_.id)
+```scala
+// Find a title by id
+Title.all.find(_.id == id)
+// Enumerate through every title to get its id
+Title.all.map(_.id)
+```
 
 Very obvious use case for this is allowing to represent enumerated types easily in a database. If you are using something
 like [Slick][3], you can easily create mappers going from, and to, type `Title`. Its also a very non verbose way to define static
