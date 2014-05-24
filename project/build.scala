@@ -7,7 +7,7 @@ object MacroBuild extends Build {
   val Version = "1.0.1"
   val StartYear = Some(2014)
   val ScalaVersion = "2.11.0"
-  val CrossScalaVersions = Seq("2.11.0","2.10.4")
+  val CrossScalaVersions = Seq("2.11.0")
 
   lazy val main = Project(Name, file("."), settings = Defaults.defaultSettings ++ Seq(
       organization := Organization,
@@ -16,7 +16,7 @@ object MacroBuild extends Build {
       scalaVersion := ScalaVersion,
       crossScalaVersions := CrossScalaVersions,
       libraryDependencies ++= Seq(
-        "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test"
+        "org.scalatest" %% "scalatest" % "2.1.5" % "test"
       )
     )
   ) dependsOn (macroSub % "compile-internal;test") settings(
@@ -35,6 +35,9 @@ object MacroBuild extends Build {
     publishLocal := {},
     scalaVersion := ScalaVersion,
     crossScalaVersions := CrossScalaVersions,
-    version := Version
+    version := Version,
+    scalacOptions:= Seq(
+      "-deprecation"
+    )
   )
 }
