@@ -19,7 +19,7 @@ First make sure you have the `mdedetrich-releases` repository in your `build.sbt
 
 Then simply add the following dependency to `libraryDependencies`
 
-    "com.mdedetrich" %% "utforsca" % "1.0.0"
+    "com.mdedetrich" %% "utforsca" % "1.0.1"
 
 
 # Contents
