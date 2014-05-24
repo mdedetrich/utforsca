@@ -6,7 +6,8 @@ object MacroBuild extends Build {
   val Organization = "com.mdedetrich"
   val Version = "1.0.0"
   val StartYear = Some(2014)
-  val ScalaVersion = "2.10.3"
+  val ScalaVersion = "2.10.4"
+  val CrossScalaVersions = Seq("2.10.4")
 
   lazy val main = Project(Name, file("."), settings = Defaults.defaultSettings ++ Seq(
       organization := Organization,
@@ -14,7 +15,7 @@ object MacroBuild extends Build {
       version := Version,
       scalaVersion := ScalaVersion,
       libraryDependencies ++= Seq(
-        "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test"
+        "org.scalatest" %% "scalatest" % "2.1.5" % "test"
       )
     )
   ) dependsOn (macroSub % "compile-internal;test") settings(
@@ -30,6 +31,11 @@ object MacroBuild extends Build {
   lazy val macroSub = Project(Name + "-macros", file("macro")) settings(
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
     publish := {},
-    publishLocal := {}
+    scalaVersion := ScalaVersion,
+    crossScalaVersions := CrossScalaVersions,
+    version := Version,
+    scalacOptions:= Seq(
+      "-deprecation"
+    )
   )
 }
