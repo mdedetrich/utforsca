@@ -4,15 +4,17 @@ import Keys._
 object MacroBuild extends Build {
   val Name = "utforsca"
   val Organization = "com.mdedetrich"
-  val Version = "1.0.0"
+  val Version = "1.0.1"
   val StartYear = Some(2014)
-  val ScalaVersion = "2.10.3"
+  val ScalaVersion = "2.11.0"
+  val CrossScalaVersions = Seq("2.11.0","2.10.4")
 
   lazy val main = Project(Name, file("."), settings = Defaults.defaultSettings ++ Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
+      crossScalaVersions := CrossScalaVersions,
       libraryDependencies ++= Seq(
         "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test"
       )
@@ -30,6 +32,9 @@ object MacroBuild extends Build {
   lazy val macroSub = Project(Name + "-macros", file("macro")) settings(
     libraryDependencies += "org.scala-lang" % "scala-reflect" % scalaVersion.value,
     publish := {},
-    publishLocal := {}
+    publishLocal := {},
+    scalaVersion := ScalaVersion,
+    crossScalaVersions := CrossScalaVersions,
+    version := Version
   )
 }

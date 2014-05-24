@@ -16,7 +16,7 @@ object SealedContents {
   def values_impl[A: c.WeakTypeTag](c: Context) = {
     import c.universe._
 
-    val symbol = weakTypeOf[A].typeSymbol
+    val symbol = weakTypeOf[A].normalize.typeSymbol
 
     if (!symbol.isClass) c.abort(
       c.enclosingPosition,
