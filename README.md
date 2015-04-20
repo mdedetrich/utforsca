@@ -35,7 +35,7 @@ Here is a list of the utils contained within [utforsca][1]
 import com.mdedetrich.utforsca.SealedContents
 ```
 
-SealedContents is an incredibly handy macro taken from [here](http://stackoverflow.com/questions/13671734/iteration-over-a-sealed-trait-in-scala).
+`SealedContents` is an incredibly handy macro taken from [here](http://stackoverflow.com/questions/13671734/iteration-over-a-sealed-trait-in-scala).
 The macro automatically constructs a `Set[T]` of an [ADT](http://en.wikipedia.org/wiki/Abstract_data_type) `T`, that contains an enumeration of all the types
 contained within `T`. As a very simple example, assume that we create some ADT `Title`, which contains various Titles that can be attributed to a person
 
@@ -85,7 +85,12 @@ possible to create instances of these types at runtime
 
 ## asMap
 
-`asMap` converts a case class to a map. In other words, if you have a case class like the following
+```scala
+import com.mdedetrich.utforsca.AsMap._
+```
+
+`asMap` is macro taken from [here](http://stackoverflow.com/a/17224392) which converts a case class to a map. 
+In other words, if you have a case class like the following
 
 ```scala
 case class SomeCaseClass(string:String,int:Int)
