@@ -1,7 +1,7 @@
 package com.mdedetrich.utforsca
 
 import language.experimental.macros
-import scala.reflect.macros.blackbox.Context
+import scala.reflect.macros._
 
 /**
  * This provides a method to get all enumerations from an ADT (which is
@@ -16,7 +16,7 @@ object SealedContents {
   def values_impl[A: c.WeakTypeTag](c: Context) = {
     import c.universe._
 
-    val symbol = weakTypeOf[A].dealias.typeSymbol
+    val symbol = weakTypeOf[A].typeSymbol
 
     if (!symbol.isClass) c.abort(
       c.enclosingPosition,
@@ -32,7 +32,7 @@ object SealedContents {
         "All children must be objects."
       ) else c.Expr[Set[A]]{
         def sourceModuleRef(sym: Symbol) = Ident(sym.asInstanceOf[scala.reflect.internal.Symbols#Symbol].sourceModule.asInstanceOf[Symbol])
-        Apply(Select(reify(Set).tree, TermName("apply")), children.map(sourceModuleRef(_)))
+        Apply(Select(reify(Set).tree, newTermName("apply")), children.map(sourceModuleRef(_)))
       }
     }
   }
