@@ -21,7 +21,7 @@ Then simply add the following dependency to `libraryDependencies`, for Scala `2.
 
     "com.mdedetrich" %% "utforsca" % "2.1.0"
 
-Or for `Scala 2.10.x`
+Or for Scala `2.10.x`
 
     "com.mdedetrich" %% "utforsca" % "1.1.0"
         
