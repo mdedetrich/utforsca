@@ -15,13 +15,16 @@ in regards to what gets added
 
 First make sure you have the `mdedetrich-releases` repository in your `build.sbt` or your `project/<somefile>.scala`.
 
-    resolvers ++= Seq("mdedetrich-releases" at "http://artifactory.mdedetrich.com/libs-release")
+    resolvers ++= Seq("mdedetrich-releases" at "http://artifactory.mdedetrich.com/libs-release-local")
 
-Then simply add the following dependency to `libraryDependencies`
+Then simply add the following dependency to `libraryDependencies`, for Scala `2.11.x`
 
-    "com.mdedetrich" %% "utforsca" % "1.0.1"
+    "com.mdedetrich" %% "utforsca" % "2.1.0"
 
+Or for `Scala 2.10.x`
 
+    "com.mdedetrich" %% "utforsca" % "1.1.0"
+        
 # Contents
 
 Here is a list of the utils contained within [utforsca][1]
@@ -79,6 +82,55 @@ Limitations exist for `SealedContents`, however they are quite obvious. The type
 * Be `sealed`: The compiler needs to now all possible child values at compile time to generate enumeration
 * Every child must be an `case object`, not a `case class`: `case object`s can be instantiated without a constructor, so its actually
 possible to create instances of these types at runtime
+
+## asMap
+
+`asMap` converts a case class to a map. In other words, if you have a case class like the following
+
+```scala
+case class SomeCaseClass(string:String,int:Int)
+val someCaseClass = SomeCaseClass("rawr",5)
+```
+
+`asMap` will convert the case class to a map
+
+```scala
+val map = someCaseClass.asMap
+println(map)
+```
+
+Will print the following
+
+```scala
+Map(
+    "string" -> "rawr",
+    "rawr" -> 5
+)
+```
+
+`asMap` will also work for existential types, i.e. if you are using something like Spire and do the following
+
+```scala
+case class SomeNumericCaseClass[T : Numeric](someNumeric:T,listOfSomeNumeric:List[T])
+```
+
+Check the tests for more info
+
+### Limitations
+
+asMap will often return a map of type `Map[String,Any]`, this means you will probably have to match against the value to check for its type.
+In other words, you will probably end up doing something like this
+
+```scala
+val map = someCaseClass.asMap
+
+map.foreach{case(key,value) =>
+    value match {
+        case s:String => println(s"key:$key contains a string:$s")
+        case i:Int => println(s"key:$key contains an int:$i")
+    }
+}
+```
 
 [1]:https://github.com/mdedetrich/utforsca
 [2]:https://github.com/scalaz/scalaz

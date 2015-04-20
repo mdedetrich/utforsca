@@ -4,19 +4,20 @@ import Keys._
 object MacroBuild extends Build {
   val Name = "utforsca"
   val Organization = "com.mdedetrich"
-  val Version = "1.0.1"
-  val StartYear = Some(2014)
-  val ScalaVersion = "2.11.0"
-  val CrossScalaVersions = Seq("2.11.0")
+  val Version = "2.1.0"
+  val StartYear = Some(2015)
+  val ScalaVersion = "2.11.6"
+  val CrossScalaVersions = Seq("2.11.6")
 
-  lazy val main = Project(Name, file("."), settings = Defaults.defaultSettings ++ Seq(
+  lazy val main = Project(Name, file("."), settings = Seq(
       organization := Organization,
       name := Name,
       version := Version,
       scalaVersion := ScalaVersion,
       crossScalaVersions := CrossScalaVersions,
       libraryDependencies ++= Seq(
-        "org.scalatest" %% "scalatest" % "2.1.5" % "test"
+        "org.scalatest" %% "scalatest" % "2.1.5" % "test",
+        "org.spire-math" %% "spire" % "0.8.2" % "test"
       )
     )
   ) dependsOn (macroSub % "compile-internal;test") settings(

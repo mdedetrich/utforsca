@@ -1,6 +1,7 @@
 package com.mdedetrich.utforsca
 
 import language.experimental.macros
+import scala.reflect.macros.blackbox
 import scala.reflect.macros.blackbox.Context
 
 /**
@@ -13,7 +14,7 @@ import scala.reflect.macros.blackbox.Context
 
 object SealedContents {
   def values[A]: Set[A] = macro values_impl[A]
-  def values_impl[A: c.WeakTypeTag](c: Context) = {
+  def values_impl[A: c.WeakTypeTag](c: blackbox.Context) = {
     import c.universe._
 
     val symbol = weakTypeOf[A].dealias.typeSymbol
