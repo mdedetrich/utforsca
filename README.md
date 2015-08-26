@@ -13,17 +13,15 @@ in regards to what gets added
 
 # Installation
 
-First make sure you have the `mdedetrich-releases` repository in your `build.sbt` or your `project/<somefile>.scala`.
+Artifacts are published to Sonatype, so you shouldn't need to add any repositories
 
-    resolvers ++= Seq("mdedetrich-releases" at "http://artifactory.mdedetrich.com/libs-release-local")
+Simply add the following dependency to `libraryDependencies`, for Scala `2.11.x`
 
-Then simply add the following dependency to `libraryDependencies`, for Scala `2.11.x`
-
-    "com.mdedetrich" %% "utforsca" % "2.1.0"
+    "org.mdedetrich" %% "utforsca" % "2.1.0"
 
 Or for Scala `2.10.x`
 
-    "com.mdedetrich" %% "utforsca" % "1.1.0"
+    "org.mdedetrich" %% "utforsca" % "1.1.0"
         
 # Contents
 
