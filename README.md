@@ -15,7 +15,7 @@ in regards to what gets added
 
 Artifacts are published to Sonatype, so you shouldn't need to add any repositories
 
-Simply add the following dependency to `libraryDependencies`, for Scala `2.11.x`
+Simply add the following dependency to `libraryDependencies`, for Scala `2.10.x`
 
     "org.mdedetrich" %% "utforsca" % "2.2.0"
 
