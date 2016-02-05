@@ -1,6 +1,6 @@
 import org.scalatest._
 
-import com.mdedetrich.utforsca.SealedContents
+import org.mdedetrich.utforsca.SealedContents
 
 
 object SealedContentsSpec {

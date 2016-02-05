@@ -1,6 +1,6 @@
 import org.scalatest._
 
-import com.mdedetrich.utforsca.AsMap._
+import org.mdedetrich.utforsca.AsMap._
 import spire.math._
 
 

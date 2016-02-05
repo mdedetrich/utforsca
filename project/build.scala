@@ -4,7 +4,7 @@ import Keys._
 object MacroBuild extends Build {
   val Name = "utforsca"
   val Organization = "org.mdedetrich"
-  val Version = "1.1.0"
+  val Version = "1.2.0"
   val StartYear = Some(2015)
   val ScalaVersion = "2.10.5"
   val CrossScalaVersions = Seq("2.10.5")

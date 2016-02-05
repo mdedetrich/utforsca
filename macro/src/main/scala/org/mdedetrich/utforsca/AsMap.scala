@@ -1,9 +1,10 @@
-package com.mdedetrich.utforsca
+package org.mdedetrich.utforsca
 
 import language.experimental.macros
 import scala.reflect.macros._
 
 object AsMap {
+
   implicit class Mappable[M](val model: M) extends AnyVal {
     def asMap: Map[String, Any] = macro Macros.asMap_impl[M]
   }
@@ -26,4 +27,5 @@ object AsMap {
       c.Expr[Map[String, Any]](Apply(mapApply, pairs.toList))
     }
   }
+
 }

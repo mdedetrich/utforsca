@@ -17,11 +17,11 @@ Artifacts are published to Sonatype, so you shouldn't need to add any repositori
 
 Simply add the following dependency to `libraryDependencies`, for Scala `2.11.x`
 
-    "org.mdedetrich" %% "utforsca" % "2.1.0"
+    "org.mdedetrich" %% "utforsca" % "2.2.0"
 
 Or for Scala `2.10.x`
 
-    "org.mdedetrich" %% "utforsca" % "1.1.0"
+    "org.mdedetrich" %% "utforsca" % "1.2.0"
         
 # Contents
 
@@ -30,7 +30,7 @@ Here is a list of the utils contained within [utforsca][1]
 ## SealedContents
 
 ```scala
-import com.mdedetrich.utforsca.SealedContents
+import org.mdedetrich.utforsca.SealedContents
 ```
 
 `SealedContents` is an incredibly handy macro taken from [here](http://stackoverflow.com/questions/13671734/iteration-over-a-sealed-trait-in-scala).
@@ -84,7 +84,7 @@ possible to create instances of these types at runtime
 ## asMap
 
 ```scala
-import com.mdedetrich.utforsca.AsMap._
+import org.mdedetrich.utforsca.AsMap._
 ```
 
 `asMap` is macro taken from [here](http://stackoverflow.com/a/17224392) which converts a case class to a map. 
