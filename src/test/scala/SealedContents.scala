@@ -1,16 +1,20 @@
 import org.scalatest._
 
-import com.mdedetrich.utforsca.SealedContents
+import org.mdedetrich.utforsca.SealedContents
 
 
 object SealedContentsSpec {
-  sealed abstract class ADT1(val id:Long)
+
+  sealed abstract class ADT1(val id: Long)
+
   case object A extends ADT1(1)
+
   case object B extends ADT1(2)
+
   case object C extends ADT1(3)
 
   object ADT1 {
-    val all:Set[ADT1] = SealedContents.values[ADT1]
+    val all: Set[ADT1] = SealedContents.values[ADT1]
   }
 
 }
@@ -35,7 +39,7 @@ class SealedContentsSpec extends FlatSpec {
   }
 
   it should "equal manually constructed version of itself" in {
-    val constructed = Set(SealedContentsSpec.A,SealedContentsSpec.B,SealedContentsSpec.C)
+    val constructed = Set(SealedContentsSpec.A, SealedContentsSpec.B, SealedContentsSpec.C)
     assert(SealedContentsSpec.ADT1.all == constructed)
   }
 

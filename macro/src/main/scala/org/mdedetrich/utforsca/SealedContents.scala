@@ -1,4 +1,4 @@
-package com.mdedetrich.utforsca
+package org.mdedetrich.utforsca
 
 import language.experimental.macros
 import scala.reflect.macros.blackbox
